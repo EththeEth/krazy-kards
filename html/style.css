@@ -110,6 +110,10 @@ footer a {
   margin-right: 1.0rem;
 }
 
+#players li.answered {
+  border-color: #0f0;
+}
+
 #players li.me {
   border: 2px solid rgb(0, 217, 255);
   color: #1b20a3;

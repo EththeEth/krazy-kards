@@ -22,7 +22,7 @@ function showQuestion() {
   $("#answers").hide();
   $("#answer").attr("contenteditable","true");
   $("#answer").removeClass("answered");
-
+  $("#players li").removeClass("answered");
 
   const question = game.current.card.replace("[]","<span class='answer'></span>");
   $("#question").html(question);
@@ -176,10 +176,12 @@ function displayPlayers() {
 
     const player = game.players[id];
     $("#players").append(`<li id="player-${player.id}"><i class="fa-solid fa-gavel"></i>${player.name}<span class="score">${player.score}</span></li>`);
+    if (game.current.answers.hasOwnProperty(id)) { $("li#player-" + id).addClass("answered"); }
 
   }
 
   $("li#player-" + playerid).addClass("me");
+
 
   $("#players li").removeClass("judge");
   $("#player-" + game.current.judge).addClass("judge");
@@ -241,6 +243,7 @@ $(document).ready(() => {
     if (e.originalEvent.key == "Enter") {
       $("#answer").removeAttr("contenteditable");
       $("#answer").addClass("answered");
+      $("li#player-" + playerid).addClass("answered");
       $.ajax({
         url: "/answer/" + gameid + "/" + playerid + "/" + answer
       }).done((data) => {

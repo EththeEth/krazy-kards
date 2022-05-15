@@ -39,6 +39,7 @@ function initGame() {
     },
     current: {
       card: null,
+      cardIndex: null,
       judge: null,
       answers: {
 
@@ -135,7 +136,8 @@ app.get('/getgame/(*)', function (req, res) {
 app.get('/startgame/(*)', function (req, res) {
   const gameid = req.params[0];
   games[gameid].status = "playing";
-  games[gameid].current.card = cards[Math.floor(Math.random() * cards.length)];
+  games[gameid].current.cardIndex = Math.floor(Math.random() * cards.length);
+  games[gameid].current.card = cards[games[gameid].current.cardIndex];
   const players = Object.keys(games[gameid].players);
   games[gameid].current.judge = players[Math.floor(Math.random() * players.length)];
   res.send(games[gameid]);
@@ -156,12 +158,14 @@ app.get('/judge/(*)/(*)', function (req, res) {
   const gameid = req.params[0];
   const winner = req.params[1];
   games[gameid].players[winner].score++;
+  cards.splice(games[gameid].current.cardIndex,1);
   if (games[gameid].players[winner].score < winscore) {
     const players = Object.keys(games[gameid].players);
     let next = players.indexOf(games[gameid].current.judge) + 1;
     if (next == players.length) next = 0;
     games[gameid].current.judge = players[next];
-    games[gameid].current.card = cards[Math.floor(Math.random() * cards.length)];
+    games[gameid].current.cardIndex = Math.floor(Math.random() * cards.length);
+    games[gameid].current.card = cards[games[gameid].current.cardIndex];
     games[gameid].current.answers = {};
     games[gameid].status = "playing";
   } else {
