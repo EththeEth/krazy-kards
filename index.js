@@ -1,7 +1,7 @@
-let express = require('express');
-let uuid = require('uuid');
-let path = require("path");
-let fs = require('fs');
+const express = require('express');
+const uuid = require('uuid');
+const path = require("path");
+const fs = require('fs');
 
 const INFO = 3;
 const WARN = 2;
@@ -16,7 +16,7 @@ let cardlist = fs.readFileSync(path.join(__dirname,"cards.txt"));
 let cards = cardlist.toString().replace(/\r\n/g,'\n'). split('\n');
 
 let app = express();
-const webport = 8888;
+const webport = parseInt(process.env.PORT) || 8080;
 
 let logLevel = MANDATORY; // Default to error-only logging
 

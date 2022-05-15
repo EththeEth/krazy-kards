@@ -107,3 +107,7 @@ dist
 tests/
 
 .DS_Store
+
+app.yaml
+
+.gcloudignore
