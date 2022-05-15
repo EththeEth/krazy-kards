@@ -16,7 +16,7 @@ let cardlist = fs.readFileSync(path.join(__dirname,"cards.txt"));
 let cards = cardlist.toString().replace(/\r\n/g,'\n'). split('\n');
 
 let app = express();
-const webport = parseInt(process.env.PORT) || 8080;
+const webport = parseInt(process.env.PORT) || 80;
 
 let logLevel = MANDATORY; // Default to error-only logging
 
