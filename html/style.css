@@ -48,6 +48,10 @@ header nav ul li a {
   color: rgb(0, 217, 255);
 }
 
+header nav ul li span#joinurl {
+  padding-right: 2rem;
+}
+
 footer {
   background-color: #1b20a3;
   color: rgb(0, 217, 255);

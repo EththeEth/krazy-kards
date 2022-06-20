@@ -212,6 +212,11 @@ $(document).ready(() => {
 
     $("#players").show();
 
+    // Display join URL
+    if (playerid == game.host) {
+      $("#joinurl").html("Invitation URL: " + location.origin + "/join?game=" + game.id);
+    }  
+    
     if (game.status == "waiting") {
 
       if (game.host == playerid) {
