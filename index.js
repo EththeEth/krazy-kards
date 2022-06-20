@@ -120,6 +120,12 @@ app.get('/newplayer/(*)', function (req, res) {
   res.send(newPlayer(gameid));
 });
 
+app.get('/removeplayer/(*)/(*)', function (req, res) {
+  const gameid = req.params[0];
+  const playerid = req.params[1];
+  delete games[gameid].players[playerid];
+});
+
 app.get('/playername/(*)/(*)/(*)', function (req, res) {
   const gameid = req.params[0];
   const playerid = req.params[1];

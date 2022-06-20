@@ -137,6 +137,15 @@ footer a {
   display: inline-block;
 }
 
+#players li i.fa-circle-xmark {
+  color: #909090;
+}
+
+#players li i.fa-circle-xmark:hover {
+  color: #f00;
+  cursor: pointer;
+}
+
 #answers {
   clear: both;
   padding-top: 2.0rem;

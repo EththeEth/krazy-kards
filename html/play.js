@@ -175,16 +175,25 @@ function displayPlayers() {
   for (id in game.players) {
 
     const player = game.players[id];
-    $("#players").append(`<li id="player-${player.id}"><i class="fa-solid fa-gavel"></i>${player.name}<span class="score">${player.score}</span></li>`);
+    $("#players").append(`<li id="player-${player.id}"><i class="fa-solid fa-gavel"></i>${player.name}<span class="score">${player.score}</span>` + ((game.host == playerid && player.id != playerid) ? (`<i class="fa-solid fa-circle-xmark" playerid="${player.id}"></i>`) : ``) + `</li>`);
     if (game.current.answers.hasOwnProperty(id)) { $("li#player-" + id).addClass("answered"); }
 
   }
 
   $("li#player-" + playerid).addClass("me");
 
-
   $("#players li").removeClass("judge");
   $("#player-" + game.current.judge).addClass("judge");
+
+  $("#players li i.fa-circle-xmark").click(function() {
+    let removeid = $(this).attr("playerid");
+    $.ajax({
+      url: "/removeplayer/" + game.id + "/" + removeid
+    }).done((data) => {
+    }).fail((data) => {
+    }).always((data) => {
+    });
+  });
 
 }
 
