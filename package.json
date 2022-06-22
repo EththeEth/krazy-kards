@@ -28,5 +28,6 @@
     "jquery": "^3.6.0",
     "path": "^0.12.7",
     "uuid": "^8.3.2"
-  }
+  },
+  "heroku-prebuild": "npm config set \"//npm.fontawesome.com/:_authToken\" $FONT_AWESOME_AUTH_TOKEN"
 }
