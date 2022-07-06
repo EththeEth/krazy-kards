@@ -107,6 +107,10 @@ app.get('/(*\.png)', function (req, res) {
   res.sendFile(path.join(__dirname,'html',req.url));
 });
 
+app.get('/(*\.svg)', function (req, res) {
+  res.sendFile(path.join(__dirname,'html',req.url));
+});
+
 app.get('/favicon.ico', function (req, res) {
   res.sendFile(path.join(__dirname,'html/favicon.ico'));
 });

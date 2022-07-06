@@ -123,12 +123,17 @@ footer a {
   color: #1b20a3;
 }
 
-#players li .fa-gavel {
-  color: rgb(137, 185, 195);
+#players li .close {
+  height: 1.3rem;
+  display: inline-block;
 }
 
-#players li.judge .fa-gavel {
-  color: #0f0;
+#players li .gavel {
+  display: none;
+  height: 1.3rem;
+}
+
+#players li.judge .gavel {
   display: inline-block;
   margin-right: 0.5rem;
 }
