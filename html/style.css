@@ -131,6 +131,7 @@ footer a {
 #players li .gavel {
   display: none;
   height: 1.3rem;
+  color: #080;
 }
 
 #players li.judge .gavel {
